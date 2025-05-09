@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="683.0" prefWidth="600.0" style="-fx-background-color: #B0E0E6;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Modifierreclamation">
+   <children>
+      <AnchorPane prefHeight="77.0" prefWidth="600.0" style="-fx-background-color: #2c949b;">
+         <children>
+            <Label layoutX="44.0" layoutY="19.0" prefHeight="39.0" prefWidth="130.0" text="modifier" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
+               <font>
+                  <Font name="Berlin Sans FB" size="35.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <ListView fx:id="reclamationList" layoutX="40.0" layoutY="89.0" prefHeight="200.0" prefWidth="519.0" />
+      <Label layoutX="34.0" layoutY="330.0" prefHeight="18.0" prefWidth="83.0" text="reclamtion id" />
+      <Label layoutX="34.0" layoutY="369.0" text="type de reclamation" />
+      <Label layoutX="38.0" layoutY="452.0" text="commentaire" />
+      <TextField fx:id="modifierid" layoutX="150.0" layoutY="326.0" />
+      <TextArea fx:id="modifierreclamation" layoutX="124.0" layoutY="461.0" prefHeight="154.0" prefWidth="400.0" />
+      <ComboBox fx:id="type" layoutX="149.0" layoutY="365.0" prefWidth="150.0" />
+      <Button layoutX="176.0" layoutY="630.0" mnemonicParsing="false" onAction="#annulermodification" prefHeight="39.0" prefWidth="124.0" text="annuler" />
+      <Button layoutX="324.0" layoutY="630.0" mnemonicParsing="false" onAction="#validermodification" prefHeight="39.0" prefWidth="130.0" text="valider" />
+   </children>
+</AnchorPane>

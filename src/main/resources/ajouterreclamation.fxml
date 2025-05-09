@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ajouterreclamation">
+   <children>
+      <AnchorPane prefHeight="402.0" prefWidth="167.0" style="-fx-background-color: #2c949b;">
+         <children>
+            <Label layoutX="16.0" layoutY="24.0" text="Reclamation">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="243.0" layoutY="82.0" text="Type" />
+      <Label layoutX="243.0" layoutY="137.0" text="commentaire" />
+      <TextArea fx:id="ajoutcommentaire" layoutX="240.0" layoutY="155.0" prefHeight="200.0" prefWidth="305.0" promptText="Commentaire" />
+      <ComboBox fx:id="ajoutype" layoutX="243.0" layoutY="100.0" prefWidth="150.0" promptText="Type" />
+      <Button layoutX="239.0" layoutY="361.0" mnemonicParsing="false" onAction="#annulerajout" prefHeight="26.0" prefWidth="121.0" text="Annuler" />
+      <Button layoutX="393.0" layoutY="361.0" mnemonicParsing="false" onAction="#validerajout" prefHeight="26.0" prefWidth="113.0" text="Valider" />
+   </children>
+</AnchorPane>

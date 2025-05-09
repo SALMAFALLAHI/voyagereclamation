@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Afficherreclamation">
+   <children>
+      <AnchorPane layoutX="-1.0" prefHeight="186.0" prefWidth="622.0" style="-fx-background-color: #2c949b;" />
+      <AnchorPane layoutY="305.0" prefHeight="142.0" prefWidth="622.0" style="-fx-background-color: #B0E0E6;">
+         <children>
+            <Button layoutX="158.0" layoutY="63.0" mnemonicParsing="false" onAction="#annulerafficher" prefHeight="46.0" prefWidth="278.0" text="annuler" />
+         </children>
+      </AnchorPane>
+      <ListView fx:id="afficherlist" layoutX="13.0" layoutY="26.0" prefHeight="319.0" prefWidth="594.0" />
+   </children>
+</AnchorPane>

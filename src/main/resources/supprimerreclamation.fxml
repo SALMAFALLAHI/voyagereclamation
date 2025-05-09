@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #B0E0E6;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.supprimerreclamation">
+   <children>
+      <ListView fx:id="supprimerlist" layoutX="30.0" layoutY="60.0" prefHeight="200.0" prefWidth="552.0" />
+      <Label layoutX="48.0" layoutY="14.0" text="supprimer">
+         <font>
+            <Font name="Bernard MT Condensed" size="23.0" />
+         </font>
+      </Label>
+      <Button layoutX="124.0" layoutY="295.0" mnemonicParsing="false" onAction="#annulersupprimer" prefHeight="42.0" prefWidth="131.0" text="annuler" />
+      <Button layoutX="315.0" layoutY="295.0" mnemonicParsing="false" onAction="#validersupprimer" prefHeight="42.0" prefWidth="131.0" text="valider" />
+   </children>
+</AnchorPane>
