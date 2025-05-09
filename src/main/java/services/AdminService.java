@@ -184,4 +184,30 @@ public class AdminService {
         return null;
     }
 
+    public entiteReclamation getReclamationById(int id) throws SQLException {
+        String query = "SELECT r.*, ra.reponse, ra.date_reponse " +
+                      "FROM reclamation r " +
+                      "LEFT JOIN reponse_admin ra ON r.id = ra.reclamation_id " +
+                      "WHERE r.id = ?";
+        
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            
+            if (resultSet.next()) {
+                entiteReclamation reclamation = new entiteReclamation(
+                    resultSet.getInt("id"),
+                    resultSet.getString("type"),
+                    resultSet.getInt("iduser"),
+                    resultSet.getDate("datedepublication"),
+                    resultSet.getString("contenu"),
+                    resultSet.getString("statut")
+                );
+                reclamation.setReponse(resultSet.getString("reponse"));
+                reclamation.setDateReponse(resultSet.getDate("date_reponse"));
+                return reclamation;
+            }
+        }
+        return null;
+    }
 }

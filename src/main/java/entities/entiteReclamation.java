@@ -9,6 +9,8 @@ public class entiteReclamation {
     private Date datedepublication;
     private String contenu;
     private String statut;
+    private String reponse;
+    private Date dateReponse;
 
     public entiteReclamation() {
         // Default constructor
@@ -36,6 +38,10 @@ public class entiteReclamation {
     public void setContenu(String contenu) { this.contenu = contenu; }
     public String getStatut() { return statut; }
     public void setStatut(String statut) { this.statut = statut; }
+    public String getReponse() { return reponse; }
+    public void setReponse(String reponse) { this.reponse = reponse; }
+    public Date getDateReponse() { return dateReponse; }
+    public void setDateReponse(Date dateReponse) { this.dateReponse = dateReponse; }
 
     @Override
     public String toString() {
@@ -46,6 +52,8 @@ public class entiteReclamation {
                 ", date=" + datedepublication +
                 ", contenu='" + contenu + '\'' +
                 ", statut='" + statut + '\'' +
+                ", reponse='" + reponse + '\'' +
+                ", dateReponse=" + dateReponse +
                 '}';
     }
 }

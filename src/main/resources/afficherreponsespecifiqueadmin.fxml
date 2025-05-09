@@ -1,14 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+        <?import javafx.geometry.Insets?>
+        <?import javafx.scene.control.Button?>
+        <?import javafx.scene.control.Label?>
+        <?import javafx.scene.control.TextField?>
+        <?import javafx.scene.control.TextArea?>
+        <?import javafx.scene.layout.VBox?>
+        <?import javafx.scene.layout.HBox?>
+        <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controllers.Afficherreponsespecifiqueadmin"
-            prefHeight="400.0" prefWidth="600.0">
+<VBox prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.Afficherreponsespecifiqueadmin" stylesheets="@/css/style1.css" spacing="20">
+<padding>
+    <Insets top="20" right="20" bottom="20" left="20"/>
+</padding>
+<children>
+    <!-- Header Section -->
+    <Label fx:id="headerLabel" text="Rechercher une Réclamation">
+        <font>
+            <Font name="Berlin Sans FB Demi Bold" size="24.0"/>
+        </font>
+        <VBox.margin>
+            <Insets bottom="20"/>
+        </VBox.margin>
+    </Label>
 
-</AnchorPane>
+    <!-- Search Section -->
+    <HBox spacing="15" alignment="CENTER">
+        <children>
+            <Label text="ID Réclamation :" styleClass="search-label">
+                <font>
+                    <Font name="System Bold" size="14.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="idField" prefWidth="150.0" promptText="Entrez l'ID"/>
+            <Button fx:id="searchButton" text="Rechercher" onAction="#rechercherReclamation" prefHeight="30.0" prefWidth="120.0"/>
+            <Button fx:id="cancelButton" text="Annuler" onAction="#annulerRecherche" prefHeight="30.0" prefWidth="120.0"/>
+        </children>
+    </HBox>
+
+    <!-- Details Section -->
+    <VBox fx:id="detailsPane" prefHeight="400.0" prefWidth="560.0" spacing="15">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+        <children>
+            <!-- Reclamation Details -->
+            <Label text="Détails de la Réclamation" styleClass="section-label">
+                <font>
+                    <Font name="System Bold" size="16.0"/>
+                </font>
+            </Label>
+            <HBox spacing="10">
+                <children>
+                    <Label text="ID :" styleClass="detail-label"/>
+                    <Label fx:id="idLabel" text="N/A" styleClass="detail-value"/>
+                </children>
+            </HBox>
+            <HBox spacing="10">
+                <children>
+                    <Label text="Type :" styleClass="detail-label"/>
+                    <Label fx:id="typeLabel" text="N/A" styleClass="detail-value"/>
+                </children>
+            </HBox>
+            <HBox spacing="10">
+                <children>
+                    <Label text="Date :" styleClass="detail-label"/>
+                    <Label fx:id="dateLabel" text="N/A" styleClass="detail-value"/>
+                </children>
+            </HBox>
+            <VBox spacing="5">
+                <children>
+                    <Label text="Contenu :" styleClass="detail-label"/>
+                    <TextArea fx:id="contenuArea" prefHeight="80.0" prefWidth="520.0" editable="false" wrapText="true"/>
+                </children>
+            </VBox>
+
+            <!-- Admin Response -->
+            <Label text="Réponse de l'Admin" styleClass="section-label">
+                <font>
+                    <Font name="System Bold" size="16.0"/>
+                </font>
+                <VBox.margin>
+                    <Insets top="10"/>
+                </VBox.margin>
+            </Label>
+            <HBox spacing="10">
+                <children>
+                    <Label text="Date Réponse :" styleClass="detail-label"/>
+                    <Label fx:id="responseDateLabel" text="N/A" styleClass="detail-value"/>
+                </children>
+            </HBox>
+            <VBox spacing="5">
+                <children>
+                    <Label text="Réponse :" styleClass="detail-label"/>
+                    <TextArea fx:id="responseArea" prefHeight="80.0" prefWidth="520.0" editable="false" wrapText="true"/>
+                </children>
+            </VBox>
+        </children>
+    </VBox>
+</children>
+</VBox>
