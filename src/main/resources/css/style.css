@@ -1,0 +1,65 @@
+/* Header Label Style */
+#headerLabel {
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+/* Content Pane Style */
+#contentPane {
+    -fx-background-color: #F0FFFF;
+    -fx-border-color: #d3d3d3;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+/* Response Label Style */
+#reponselabel {
+    -fx-text-fill: #444444;
+    -fx-font-weight: bold;
+}
+
+/* ListView Style */
+#repondrelist {
+    -fx-background-color: white;
+    -fx-border-color: #d3d3d3;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+/* TextArea Style */
+#responseTextArea {
+    -fx-background-color: white;
+    -fx-border-color: #d3d3d3;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #999999;
+}
+
+/* Button Style */
+.button {
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+#addButton {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+#addButton:hover {
+    -fx-background-color: #45a049;
+}
+
+#cancelButton {
+    -fx-background-color: #f44336;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+#cancelButton:hover {
+    -fx-background-color: #d32f2f;
+}
