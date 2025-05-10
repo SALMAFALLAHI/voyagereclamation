@@ -11,6 +11,14 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class AdminService {
+    private static final String URL = "jdbc:mysql://localhost:3306/avis_et_reclamation";
+    private static final String USER = "root";
+    private static final String PASSWORD = "";
+
+    private Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASSWORD);
+    }
+
     private Connection connection;
 
     public AdminService() {
@@ -209,5 +217,32 @@ public class AdminService {
             }
         }
         return null;
+    }
+
+    public List<entiteReclamation> getAllTreatedReclamations() throws SQLException {
+        List<entiteReclamation> reclamations = new ArrayList<>();
+        String query = "SELECT r.*, ra.reponse, ra.date_reponse " +
+                      "FROM reclamation r " +
+                      "LEFT JOIN reponse_admin ra ON r.id = ra.reclamation_id " +
+                      "WHERE r.statut = 'traite'";
+        
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+            
+            while (rs.next()) {
+                entiteReclamation reclamation = new entiteReclamation();
+                reclamation.setId(rs.getInt("id"));
+                reclamation.setType(rs.getString("type"));
+                reclamation.setContenu(rs.getString("contenu"));
+                reclamation.setDatedepublication(rs.getDate("datedepublication"));
+                reclamation.setReponse(rs.getString("reponse"));
+                reclamation.setDateReponse(rs.getDate("date_reponse"));
+                reclamations.add(reclamation);
+            }
+        }
+        
+        System.out.println("Nombre de réclamations traitées : " + reclamations.size());
+        return reclamations;
     }
 }

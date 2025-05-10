@@ -38,13 +38,13 @@ public class Ajouterreponseadmin implements Initializable {
     private Label headerLabel;
 
     @FXML
-    private ListView<entiteReclamation> repondrelist;
+    private ListView<entiteReclamation> reclamationlist;
 
     @FXML
     private Label responseLabel;
 
     @FXML
-    private TextArea reponselabel;
+    private TextArea responselabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -59,7 +59,7 @@ public class Ajouterreponseadmin implements Initializable {
         }
 
         // Customize how reclamations are displayed in the ListView
-        repondrelist.setCellFactory(lv -> new ListCell<entiteReclamation>() {
+        reclamationlist.setCellFactory(lv -> new ListCell<entiteReclamation>() {
             @Override
             protected void updateItem(entiteReclamation reclamation, boolean empty) {
                 super.updateItem(reclamation, empty);
@@ -82,7 +82,7 @@ public class Ajouterreponseadmin implements Initializable {
     void ajouterreponse(ActionEvent event) {
         try {
             // Récupérer l'ID de la réclamation sélectionnée
-            entiteReclamation selectedReclamation = repondrelist.getSelectionModel().getSelectedItem();
+            entiteReclamation selectedReclamation = reclamationlist.getSelectionModel().getSelectedItem();
             if (selectedReclamation == null) {
                 showAlert("Erreur", "Sélection requise", 
                     "Veuillez sélectionner une réclamation à traiter.", 
@@ -91,7 +91,7 @@ public class Ajouterreponseadmin implements Initializable {
             }
     
             // Récupérer la réponse de l'admin
-            String reponse = reponselabel.getText();
+            String reponse = responselabel.getText();
             if (reponse.isEmpty()) {
                 showAlert("Erreur", "Champ vide", 
                     "Veuillez saisir une réponse.", 
@@ -111,7 +111,7 @@ public class Ajouterreponseadmin implements Initializable {
     loadReclamations();
     
     // Vider le champ de réponse
-    reponselabel.clear();
+            responselabel.clear();
 
 } catch (SQLException e) {
     showAlert("Erreur", "Erreur de base de données", 
@@ -126,8 +126,8 @@ public class Ajouterreponseadmin implements Initializable {
     @FXML
     void annulerreponse(ActionEvent event) {
         // Clear the selected reclamation and response text
-        repondrelist.getSelectionModel().clearSelection();
-        reponselabel.clear();
+        reclamationlist.getSelectionModel().clearSelection();
+        responselabel.clear();
 
     }
     private void showAlert(String title, String header, String content, Alert.AlertType alertType) {
@@ -142,7 +142,7 @@ public class Ajouterreponseadmin implements Initializable {
         AdminService adminService = new AdminService();
         ObservableList<entiteReclamation> reclamations = 
             FXCollections.observableArrayList(adminService.getReclamationsNonTraitees());
-        repondrelist.setItems(reclamations);
+        reclamationlist.setItems(reclamations);
     }
 
 }

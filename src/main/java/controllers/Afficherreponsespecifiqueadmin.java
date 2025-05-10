@@ -140,6 +140,8 @@ public class Afficherreponsespecifiqueadmin {
         contenuArea.clear();
         responseDateLabel.setText("N/A");
         responseArea.clear();
+
+        cancelButton.getScene().getWindow().hide();
         
         // Hide the details pane
         detailsPane.setVisible(false);
