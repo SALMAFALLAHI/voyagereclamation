@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.TableView?>
+
+<VBox prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="controllers.AfficherReclamationsTraitees" stylesheets="@/css/style1.css" spacing="20">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Header Section -->
+    <Label text="Réclamations Traitées" styleClass="header-label">
+        <font>
+            <Font name="Berlin Sans FB Demi Bold" size="24.0"/>
+        </font>
+        <VBox.margin>
+            <Insets bottom="20"/>
+        </VBox.margin>
+    </Label>
+
+    <!-- Total Label -->
+    <Label fx:id="totalLabel" text="Total des réclamations traitées : 0" styleClass="total-label">
+        <font>
+            <Font name="System Bold" size="14.0"/>
+        </font>
+    </Label>
+    <Button fx:id="retourButton" text="Retour" onAction="#handleRetour" prefWidth="100"/>
+
+    <!-- Table Section -->
+    <TableView fx:id="reclamationTable" VBox.vgrow="ALWAYS">
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
+        <columns>
+            <TableColumn fx:id="idColumn" prefWidth="50" text="ID"/>
+            <TableColumn fx:id="typeColumn" prefWidth="100" text="Type"/>
+            <TableColumn fx:id="dateColumn" prefWidth="100" text="Date"/>
+            <TableColumn fx:id="contenuColumn" prefWidth="200" text="reclamation"/>
+            <TableColumn fx:id="reponseColumn" prefWidth="200" text="Réponse"/>
+           
+        </columns>
+    </TableView>
+</VBox> 

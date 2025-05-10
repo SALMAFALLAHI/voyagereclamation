@@ -1,0 +1,72 @@
+/* Header Label Style */
+#headerLabel {
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+/* Search Label Style */
+.search-label {
+    -fx-text-fill: #444444;
+    -fx-font-weight: bold;
+}
+
+/* Details Pane Style */
+#detailsPane {
+    -fx-background-color: #F0FFFF;
+    -fx-border-color: #d3d3d3;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+/* Section Label Style */
+.section-label {
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+}
+
+/* Detail Label Style */
+.detail-label {
+    -fx-text-fill: #444444;
+    -fx-font-weight: bold;
+    -fx-min-width: 100px;
+}
+
+/* Detail Value Style */
+.detail-value {
+    -fx-text-fill: #666666;
+}
+
+/* TextArea Style */
+.text-area {
+    -fx-background-color: white;
+    -fx-border-color: #d3d3d3;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+/* TextField Style */
+#idField {
+    -fx-background-color: white;
+    -fx-border-color: #d3d3d3;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #999999;
+}
+
+/* Button Style */
+#searchButton {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+#searchButton:hover {
+    -fx-background-color: #45a049;
+}
