@@ -38,7 +38,8 @@ public class AdminService {
                     resultSet.getInt("iduser"),
                     resultSet.getDate("datedepublication"),
                     resultSet.getString("contenu"),
-                    resultSet.getString("statut")
+                    resultSet.getString("statut"),
+                    resultSet.getString("adresse_email")
                 );
                 reclamations.add(reclamation);
             }
@@ -59,7 +60,8 @@ public class AdminService {
                     resultSet.getInt("iduser"),
                     resultSet.getDate("datedepublication"),
                     resultSet.getString("contenu"),
-                    resultSet.getString("statut")
+                    resultSet.getString("statut"),
+                    resultSet.getString("adresse_email")
                 );
                 reclamations.add(reclamation);
             }
@@ -86,6 +88,7 @@ public class AdminService {
                 reponse.put("contenu_reclamation", resultSet.getString("contenu"));
                 reponse.put("type_reclamation", resultSet.getString("type"));
                 reponse.put("date_reclamation", resultSet.getDate("datedepublication"));
+                reponse.put("adresse_email", resultSet.getString("adresse_email"));
                 reponses.add(reponse);
             }
         }
@@ -105,7 +108,8 @@ public class AdminService {
                         rs.getInt("iduser"),
                         rs.getDate("datedepublication"),
                         rs.getString("contenu"),
-                        rs.getString("statut")
+                        rs.getString("statut"),
+                        rs.getString("adresse_email")
                 );
                 reclamations.add(reclamation);
             }
@@ -209,7 +213,8 @@ public class AdminService {
                     resultSet.getInt("iduser"),
                     resultSet.getDate("datedepublication"),
                     resultSet.getString("contenu"),
-                    resultSet.getString("statut")
+                    resultSet.getString("statut"),
+                    resultSet.getString("adresse_email")
                 );
                 reclamation.setReponse(resultSet.getString("reponse"));
                 reclamation.setDateReponse(resultSet.getDate("date_reponse"));

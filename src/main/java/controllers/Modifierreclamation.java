@@ -52,6 +52,10 @@ public class Modifierreclamation implements Initializable {
     @FXML
     private TextArea modifierreclamation;
 
+
+    @FXML
+    private Button retourButton;
+
     
 
 
@@ -60,6 +64,9 @@ public class Modifierreclamation implements Initializable {
 
     @FXML
     private ComboBox<String> type;
+
+    @FXML
+    private TextField adresseEmailField;
 
     private Reclamation service = new Reclamation();
     private int currentReclamationId;
@@ -139,6 +146,7 @@ public class Modifierreclamation implements Initializable {
                 type.setValue(reclamation.getType());
                 modifierreclamation.setText(reclamation.getContenu());
                 originalContent = reclamation.getContenu();
+                adresseEmailField.setText(reclamation.getAdresseEmail());
             }
         }
 
@@ -147,19 +155,8 @@ public class Modifierreclamation implements Initializable {
         modifierid.clear();
         modifierreclamation.clear();
         type.getSelectionModel().clearSelection();
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/menu.fxml"));
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Menu Réclamations");
-            stage.setScene(new Scene(root));
-            stage.show();
-            
-            // Fermer la fenêtre actuelle
-            ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        retourButton.getScene().getWindow().hide();
+
         
 
         
@@ -187,8 +184,12 @@ public class Modifierreclamation implements Initializable {
                     currentUserId,
                     new Date(),
                     commentaire,
-                    commentaire.equals(originalContent) ? "traite" : "non traite"
+                    commentaire.equals(originalContent) ? "traite" : "non traite",
+                    adresseEmailField.getText()
             );
+
+            String nouvelleAdresseEmail = adresseEmailField.getText();
+            reclamation.setAdresseEmail(nouvelleAdresseEmail);
 
             service.modifier(reclamation);
             showAlert("Success", "Reclamation Modified", 

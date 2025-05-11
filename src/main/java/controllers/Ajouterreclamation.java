@@ -25,10 +25,16 @@ public class Ajouterreclamation implements Initializable {
     @FXML
     private TextArea ajoutcommentaire;
 
+    @FXML
+    private Button retourButton;
+
    
 
     @FXML
     private ComboBox<String> ajoutype;
+
+    @FXML
+    private TextField adresseEmailField;
 
     private Reclamation service = new Reclamation();
     private int currentUserId = 1; // ID de l'utilisateur connecté
@@ -64,19 +70,7 @@ public class Ajouterreclamation implements Initializable {
         
         ajoutcommentaire.clear();
         ajoutype.getSelectionModel().clearSelection();
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/menu.fxml"));
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Menu Réclamations");
-            stage.setScene(new Scene(root));
-            stage.show();
-            
-            // Fermer la fenêtre actuelle
-            ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        retourButton.getScene().getWindow().hide();
     }
 
     @FXML
@@ -86,6 +80,7 @@ public class Ajouterreclamation implements Initializable {
         // 1. Récupération des données du formulaire
             String commentaire = ajoutcommentaire.getText();
             String selectedTypeName = ajoutype.getValue();
+            String adresseEmail = adresseEmailField.getText();
 
             // 2. Vérification des champs
             if (commentaire.isEmpty() || selectedTypeName == null) {
@@ -100,8 +95,11 @@ public class Ajouterreclamation implements Initializable {
                     currentUserId, // implement this
                     new Date(),
                     commentaire,
-                    "non traite"
+                    "non traite",
+                    adresseEmail
             );
+
+            reclamation.setAdresseEmail(adresseEmail);
 
             // 5. Appel du service pour ajouter la réclamation
 

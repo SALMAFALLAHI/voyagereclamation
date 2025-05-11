@@ -16,7 +16,7 @@ public class MainFX extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/afficherreponsespecifiqueadmin.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/menuadmin.fxml"));
         try {
             Parent parent = loader.load();
             Scene scene = new Scene(parent);

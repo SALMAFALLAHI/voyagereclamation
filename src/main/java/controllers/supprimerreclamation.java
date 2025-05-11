@@ -21,6 +21,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class supprimerreclamation implements Initializable {
+    @FXML
+    private Button retourButton;
 
     @FXML
     private ListView<entiteReclamation> supprimerlist;
@@ -29,19 +31,8 @@ public class supprimerreclamation implements Initializable {
 
     @FXML
     void annulersupprimer(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/menu.fxml"));
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Menu Réclamations");
-            stage.setScene(new Scene(root));
-            stage.show();
-            
-            // Fermer la fenêtre actuelle
-            ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // fermer la fenêtre actuelle
+        retourButton.getScene().getWindow().hide();
 
     }
 

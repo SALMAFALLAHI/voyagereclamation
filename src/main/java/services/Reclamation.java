@@ -33,8 +33,10 @@ public class Reclamation implements IReclamation<entiteReclamation> {
                         rs.getInt("iduser"),
                         rs.getDate("datedepublication"),
                         rs.getString("contenu"),
-                        rs.getString("statut")
+                        rs.getString("statut"),
+                        rs.getString("adresse_email")
                 );
+                reclamation.setAdresseEmail(rs.getString("adresse_email"));
                 reclamations.add(reclamation);
             }
         } catch (SQLException e) {
@@ -46,13 +48,14 @@ public class Reclamation implements IReclamation<entiteReclamation> {
 
     @Override
     public void ajouter(entiteReclamation reclamation) throws SQLException {
-        String query = "INSERT INTO reclamation (type, iduser, datedepublication, contenu, statut) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO reclamation (type, iduser, datedepublication, contenu, statut, adresse_email) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement pst = connection.prepareStatement(query)) {
             pst.setString(1, reclamation.getType());
             pst.setInt(2, currentUserId); // Utiliser l'ID de l'utilisateur connecté
             pst.setDate(3, new java.sql.Date(reclamation.getDatedepublication().getTime()));
             pst.setString(4, reclamation.getContenu());
             pst.setString(5, reclamation.getStatut());
+            pst.setString(6, reclamation.getAdresseEmail());
 
             pst.executeUpdate();
         }
@@ -71,14 +74,14 @@ public class Reclamation implements IReclamation<entiteReclamation> {
             if (rs.next()) {
                 System.out.println("Réclamation trouvée dans la base de données");
                 // Procéder à la modification
-                String req = "UPDATE reclamation SET type=?, contenu=?, statut=?, datedepublication=? WHERE id=?";
+                String req = "UPDATE reclamation SET type=?, contenu=?, statut=?, adresse_email=?, datedepublication=? WHERE id=?";
                 try (PreparedStatement preparedStatement = connection.prepareStatement(req)) {
                     preparedStatement.setString(1, reclamation.getType());
                     preparedStatement.setString(2, reclamation.getContenu());
                     preparedStatement.setString(3, reclamation.getStatut());
-                    preparedStatement.setDate(4, new java.sql.Date(reclamation.getDatedepublication().getTime()));
-
-                    preparedStatement.setInt(5, reclamation.getId());
+                    preparedStatement.setString(4, reclamation.getAdresseEmail());
+                    preparedStatement.setDate(5, new java.sql.Date(reclamation.getDatedepublication().getTime()));
+                    preparedStatement.setInt(6, reclamation.getId());
 
                     int rowsAffected = preparedStatement.executeUpdate();
                     if (rowsAffected > 0) {

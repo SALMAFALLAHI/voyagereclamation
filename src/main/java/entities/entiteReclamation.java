@@ -11,18 +11,20 @@ public class entiteReclamation {
     private String statut;
     private String reponse;
     private Date dateReponse;
+    private String adresseEmail;
 
     public entiteReclamation() {
         // Default constructor
     }
 
-    public entiteReclamation(int id, String type, int iduser, Date datedepublication, String contenu, String statut) {
+    public entiteReclamation(int id, String type, int iduser, Date datedepublication, String contenu, String statut, String adresseEmail) {
         this.id = id;
         this.type = type;
         this.iduser = iduser;
         this.datedepublication = datedepublication;
         this.contenu = contenu;
         this.statut = statut;
+        this.adresseEmail = adresseEmail;
     }
 
     // Getters and Setters
@@ -42,6 +44,12 @@ public class entiteReclamation {
     public void setReponse(String reponse) { this.reponse = reponse; }
     public Date getDateReponse() { return dateReponse; }
     public void setDateReponse(Date dateReponse) { this.dateReponse = dateReponse; }
+    public String getAdresseEmail() {
+        return adresseEmail;
+    }
+    public void setAdresseEmail(String adresseEmail) {
+        this.adresseEmail = adresseEmail;
+    }
 
     @Override
     public String toString() {

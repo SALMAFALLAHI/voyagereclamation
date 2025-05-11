@@ -26,6 +26,9 @@ public class Afficherreclamation  implements Initializable {
 
     @FXML
     private ListView<entiteReclamation> afficherlist;
+    @FXML
+    private Button retourButton;
+
     private Reclamation service = new Reclamation();
     
     private int currentUserId = 1;
@@ -73,19 +76,7 @@ public class Afficherreclamation  implements Initializable {
     }
     @FXML
     void annulerafficher(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/menu.fxml"));
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Menu Réclamations");
-            stage.setScene(new Scene(root));
-            stage.show();
-            
-            // Fermer la fenêtre actuelle
-            ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        retourButton.getScene().getWindow().hide();
 
     }
 
