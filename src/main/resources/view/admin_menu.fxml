@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="1000.0"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.AdminMENUController"
+            style="-fx-background-color: #f5f6fa;">
+
+    <!-- En-tête -->
+    <top>
+        <VBox alignment="CENTER" spacing="5.0" style="-fx-background-color: #2c3e50;">
+            <padding>
+                <Insets bottom="15" left="20" right="20" top="15"/>
+            </padding>
+            <Label text="Tableau de Bord Administrateur" style="-fx-text-fill: white;">
+                <font>
+                    <Font name="System Bold" size="24.0" />
+                </font>
+            </Label>
+        </VBox>
+    </top>
+
+    <!-- Menu latéral -->
+    <left>
+        <VBox spacing="10" prefWidth="250" style="-fx-background-color: #34495e;">
+            <padding>
+                <Insets top="20" bottom="20" left="15" right="15"/>
+            </padding>
+
+            <!-- Boutons de gestion -->
+            <Button text="Gérer Utilisateurs"
+                    onAction="#handleGererUtilisateurs"
+                    style="-fx-base: #3498db; -fx-text-fill: white; -fx-font-size: 14px;"
+                    maxWidth="Infinity"/>
+
+            <Button text="Gérer Réservations"
+                    onAction="#handleGererReservations"
+                    style="-fx-base: #2ecc71; -fx-text-fill: white; -fx-font-size: 14px;"
+                    maxWidth="Infinity"/>
+
+            <Button text="Gérer Hébergements"
+                    onAction="#handleGererHebergements"
+                    style="-fx-base: #e67e22; -fx-text-fill: white; -fx-font-size: 14px;"
+                    maxWidth="Infinity"/>
+
+            <Button text="Gérer Vols"
+                    onAction="#handleGererVols"
+                    style="-fx-base: #9b59b6; -fx-text-fill: white; -fx-font-size: 14px;"
+                    maxWidth="Infinity"/>
+
+            <Button fx:id="btnGererReclamations"
+                    text="Gérer Réclamations"
+                    onAction="#handleGererReclamations"
+                    style="-fx-base: #e74c3c; -fx-text-fill: white; -fx-font-size: 14px;"
+                    maxWidth="Infinity"/>
+
+            <Button text="Gérer Excursions"
+                    onAction="#handleGererExcursions"
+                    style="-fx-base: #1abc9c; -fx-text-fill: white; -fx-font-size: 14px;"
+                    maxWidth="Infinity"/>
+
+            <!-- Espace vide -->
+            <VBox VBox.vgrow="ALWAYS"/>
+
+            <!-- Bouton de déconnexion -->
+            <Button text="Déconnexion"
+                    onAction="#handleDeconnexion"
+                    style="-fx-base: #7f8c8d; -fx-text-fill: white; -fx-font-size: 14px;"
+                    maxWidth="Infinity"/>
+        </VBox>
+    </left>
+
+    <!-- Zone de contenu principal -->
+    <center>
+        <StackPane fx:id="contentArea" style="-fx-padding: 20;">
+            <VBox alignment="CENTER" spacing="20">
+                <Label text="Bienvenue dans l'interface d'administration"
+                       style="-fx-text-fill: #2c3e50; -fx-font-size: 20px;"/>
+                <Label text="Sélectionnez une option dans le menu de gauche"
+                       style="-fx-text-fill: #7f8c8d; -fx-font-size: 14px;"/>
+            </VBox>
+        </StackPane>
+    </center>
+</BorderPane>

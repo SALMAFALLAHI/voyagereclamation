@@ -7,25 +7,24 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="683.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="controllers.Modifierreclamation" stylesheets="@/css/style6.css" spacing="20">
+<VBox prefHeight="683.0" prefWidth="600.0" spacing="20" stylesheets="@/view/css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Modifierreclamation">
    <padding>
-      <Insets top="0" right="20" bottom="20" left="20"/>
+      <Insets bottom="20" left="20" right="20" top="0" />
    </padding>
    <children>
       <!-- Header Section -->
-      <VBox fx:id="headerPane" prefHeight="77.0" prefWidth="600.0" alignment="CENTER">
+      <VBox fx:id="headerPane" alignment="CENTER" prefHeight="77.0" prefWidth="600.0">
          <padding>
-            <Insets top="10"/>
+            <Insets top="10" />
          </padding>
          <children>
             <Label fx:id="headerLabel" text="Modifier une Réclamation">
                <font>
-                  <Font name="Berlin Sans FB Demi Bold" size="35.0"/>
+                  <Font name="Berlin Sans FB Demi Bold" size="35.0" />
                </font>
             </Label>
          </children>
@@ -34,56 +33,52 @@
       <!-- Main Content Section -->
       <VBox fx:id="contentPane" prefHeight="550.0" prefWidth="560.0" spacing="15">
          <padding>
-            <Insets top="20" right="20" bottom="20" left="20"/>
+            <Insets bottom="20" left="20" right="20" top="20" />
          </padding>
          <children>
             <!-- ListView for Reclamations -->
-            <ListView fx:id="reclamationList" prefHeight="200.0" prefWidth="520.0"/>
+            <ListView fx:id="reclamationList" prefHeight="200.0" prefWidth="520.0" />
 
             <!-- Reclamation ID -->
-            <HBox spacing="10" alignment="CENTER_LEFT">
+            <HBox alignment="CENTER_LEFT" spacing="10">
                <children>
                   <Label text="Réclamation ID">
                      <font>
-                        <Font name="System Bold" size="14.0"/>
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="modifierid" prefWidth="150.0"/>
+                  <TextField fx:id="modifierid" prefWidth="150.0" />
                </children>
             </HBox>
 
             <!-- Type de Réclamation -->
-            <HBox spacing="10" alignment="CENTER_LEFT">
+            <HBox alignment="CENTER_LEFT" spacing="10">
                <children>
                   <Label text="Type de Réclamation">
                      <font>
-                        <Font name="System Bold" size="14.0"/>
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="type" prefWidth="150.0"/>
+                  <ComboBox fx:id="type" prefWidth="150.0" />
                </children>
             </HBox>
 
             <!-- Commentaire -->
             <Label text="Commentaire">
                <font>
-                  <Font name="System Bold" size="14.0"/>
+                  <Font name="System Bold" size="14.0" />
                </font>
                <VBox.margin>
-                  <Insets top="10"/>
+                  <Insets top="10" />
                </VBox.margin>
             </Label>
-            <TextArea fx:id="modifierreclamation" prefHeight="154.0" prefWidth="520.0"/>
-
-            <!-- Adresse Email -->
-            <Label text="Adresse Email pour recevoir la réponse :"/>
-            <TextField fx:id="adresseEmailField" promptText="Votre adresse email"/>
+            <TextArea fx:id="modifierreclamation" prefHeight="154.0" prefWidth="520.0" />
 
             <!-- Buttons for Actions -->
-            <HBox spacing="20" alignment="CENTER" style="-fx-padding: 10 0 0 0;">
+            <HBox alignment="CENTER" spacing="20" style="-fx-padding: 10 0 0 0;">
                <children>
-                  <Button fx:id="retourButton" text="Annuler" onAction="#annulermodification" prefHeight="40.0" prefWidth="130.0"/>
-                  <Button fx:id="validerButton" text="Valider" onAction="#validermodification" prefHeight="40.0" prefWidth="130.0"/>
+                  <Button fx:id="retourButton" onAction="#annulermodification" prefHeight="40.0" prefWidth="130.0" text="Annuler" />
+                  <Button fx:id="validerButton" onAction="#validermodification" prefHeight="40.0" prefWidth="130.0" text="Valider" />
                </children>
             </HBox>
          </children>

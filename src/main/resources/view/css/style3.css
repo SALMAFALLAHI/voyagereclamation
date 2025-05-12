@@ -1,0 +1,42 @@
+/* Header Label Style */
+#headerLabel {
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+/* Root VBox Style */
+.root {
+    -fx-background-color: #F0FFFF;
+}
+
+/* Button Style */
+.button {
+    -fx-background-color: #191970;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #191970;
+}
+
+/* Specific Button Styles */
+#searchReclamationButton {
+    -fx-background-color: #2196F3;
+}
+
+#searchReclamationButton:hover {
+    -fx-background-color: #1e88e5;
+}
+
+#responseHistoryButton {
+    -fx-background-color: #7B68EE;
+}
+
+#responseHistoryButton:hover {
+    -fx-background-color: #7B68EE;
+}

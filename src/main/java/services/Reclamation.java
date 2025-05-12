@@ -1,17 +1,31 @@
 package services;
 
-import utils.MyDataBase;
+import models.entiteReclamation;
+import utils.DatabaseUtil;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import entities.entiteReclamation;
 
 public class Reclamation implements IReclamation<entiteReclamation> {
     private Connection connection;
     private int currentUserId; // Pour stocker l'ID de l'utilisateur connecté
 
     public Reclamation() {
-        connection = MyDataBase.getInstance().getConnection();
+        try {
+            connection = DatabaseUtil.getInstance().getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Initialize connection as null if it fails
+            connection = null;
+        }
+    }
+
+    // Method to check if connection is valid
+    private void ensureConnection() throws SQLException {
+        if (connection == null || connection.isClosed()) {
+            connection = DatabaseUtil.getInstance().getConnection();
+        }
     }
 
     // Méthode pour définir l'utilisateur connecté
@@ -21,6 +35,7 @@ public class Reclamation implements IReclamation<entiteReclamation> {
 
     @Override
     public List<entiteReclamation> afficher() throws SQLException {
+        ensureConnection();
         List<entiteReclamation> reclamations = new ArrayList<>();
         String req = "SELECT * FROM reclamation WHERE iduser = ?";
         try (PreparedStatement statement = connection.prepareStatement(req)) {
@@ -40,7 +55,7 @@ public class Reclamation implements IReclamation<entiteReclamation> {
                 reclamations.add(reclamation);
             }
         } catch (SQLException e) {
-            System.err.println("Erreur lors de la récupération des réclamations: " + e.getMessage());
+            System.err.println("Error retrieving reclamations: " + e.getMessage());
             throw e;
         }
         return reclamations;
@@ -48,11 +63,12 @@ public class Reclamation implements IReclamation<entiteReclamation> {
 
     @Override
     public void ajouter(entiteReclamation reclamation) throws SQLException {
+        ensureConnection();
         String query = "INSERT INTO reclamation (type, iduser, datedepublication, contenu, statut, adresse_email) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement pst = connection.prepareStatement(query)) {
             pst.setString(1, reclamation.getType());
-            pst.setInt(2, currentUserId); // Utiliser l'ID de l'utilisateur connecté
-            pst.setDate(3, new java.sql.Date(reclamation.getDatedepublication().getTime()));
+            pst.setInt(2, currentUserId);
+            pst.setDate(3, new Date(reclamation.getDatedepublication().getTime()));
             pst.setString(4, reclamation.getContenu());
             pst.setString(5, reclamation.getStatut());
             pst.setString(6, reclamation.getAdresseEmail());
@@ -63,6 +79,7 @@ public class Reclamation implements IReclamation<entiteReclamation> {
 
     @Override
     public void modifier(entiteReclamation reclamation) throws SQLException {
+        ensureConnection();
         System.out.println("Tentative de modification de la réclamation ID: " + reclamation.getId());
         
         // Vérification préalable avec plus de détails
@@ -80,14 +97,12 @@ public class Reclamation implements IReclamation<entiteReclamation> {
                     preparedStatement.setString(2, reclamation.getContenu());
                     preparedStatement.setString(3, reclamation.getStatut());
                     preparedStatement.setString(4, reclamation.getAdresseEmail());
-                    preparedStatement.setDate(5, new java.sql.Date(reclamation.getDatedepublication().getTime()));
+                    preparedStatement.setDate(5, new Date(reclamation.getDatedepublication().getTime()));
                     preparedStatement.setInt(6, reclamation.getId());
 
                     int rowsAffected = preparedStatement.executeUpdate();
-                    if (rowsAffected > 0) {
-                        System.out.println("Réclamation modifiée avec succès");
-                    } else {
-                        throw new SQLException("Échec de la modification");
+                    if (rowsAffected == 0) {
+                        throw new SQLException("No reclamation found with ID: " + reclamation.getId());
                     }
                 }
             } else {
@@ -99,6 +114,7 @@ public class Reclamation implements IReclamation<entiteReclamation> {
 
     @Override
     public void supprimer(int id) throws SQLException {
+        ensureConnection();
         // Vérifier d'abord si la réclamation appartient à l'utilisateur connecté
         String checkQuery = "SELECT COUNT(*) FROM reclamation WHERE id = ? AND iduser = ?";
         try (PreparedStatement checkStatement = connection.prepareStatement(checkQuery)) {
@@ -117,8 +133,8 @@ public class Reclamation implements IReclamation<entiteReclamation> {
             deleteStatement.setInt(1, id);
             deleteStatement.setInt(2, currentUserId);
             int rowsAffected = deleteStatement.executeUpdate();
-            if (rowsAffected > 0) {
-                System.out.println("Reclamation avec ID " + id + " a été supprimée avec succès.");
+            if (rowsAffected == 0) {
+                throw new SQLException("No reclamation found with ID: " + id);
             }
         }
     }

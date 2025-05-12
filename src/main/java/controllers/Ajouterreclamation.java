@@ -1,6 +1,6 @@
 package controllers;
 
-import entities.entiteReclamation;
+import models.entiteReclamation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,16 +8,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import services.Reclamation;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
+import test.Main;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 public class Ajouterreclamation implements Initializable {
@@ -37,7 +33,7 @@ public class Ajouterreclamation implements Initializable {
     private TextField adresseEmailField;
 
     private Reclamation service = new Reclamation();
-    private int currentUserId = 1; // ID de l'utilisateur connecté
+    private int currentUserId=1 ; // ID de l'utilisateur connecté****************
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -68,9 +64,17 @@ public class Ajouterreclamation implements Initializable {
     @FXML
     void annulerajout(ActionEvent event) {
         
-        ajoutcommentaire.clear();
-        ajoutype.getSelectionModel().clearSelection();
-        retourButton.getScene().getWindow().hide();
+       // ajoutcommentaire.clear();
+        //ajoutype.getSelectionModel().clearSelection();
+       // retourButton.getScene().getWindow().hide();
+        try {
+            // Transition vers user_dashboard.fxml
+            Main.changeScene("/view/user_dashboard.fxml", "Bienvenue - Gestion de Vols", 700, 700);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Erreur", "Erreur de Navigation", "Impossible de retourner au tableau de bord : " + e.getMessage(), Alert.AlertType.ERROR);
+        }
     }
 
     @FXML

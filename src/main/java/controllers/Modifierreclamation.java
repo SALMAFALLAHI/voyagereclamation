@@ -20,10 +20,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.ResourceBundle;*/
-import javafx.fxml.FXMLLoader;
 
 
-import entities.entiteReclamation;
+import models.entiteReclamation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -31,16 +30,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import services.Reclamation;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import test.Main;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Date;
-
-
 import java.util.ResourceBundle;
 
 
@@ -152,10 +147,18 @@ public class Modifierreclamation implements Initializable {
 
     @FXML
     void annulermodification(ActionEvent event) {
-        modifierid.clear();
-        modifierreclamation.clear();
-        type.getSelectionModel().clearSelection();
-        retourButton.getScene().getWindow().hide();
+       // modifierid.clear();
+        //modifierreclamation.clear();
+        //type.getSelectionModel().clearSelection();
+       // retourButton.getScene().getWindow().hide();
+        try {
+            // Transition vers user_dashboard.fxml
+            Main.changeScene("/view/user_dashboard.fxml", "Bienvenue - Gestion de Vols", 700, 700);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Erreur", "Erreur de Navigation", "Impossible de retourner au tableau de bord : " + e.getMessage(), Alert.AlertType.ERROR);
+        }
 
         
 

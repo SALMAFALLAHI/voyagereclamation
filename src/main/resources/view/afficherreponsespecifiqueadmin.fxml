@@ -10,7 +10,7 @@
         <?import javafx.scene.text.Font?>
 
 <VBox prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="controllers.Afficherreponsespecifiqueadmin" stylesheets="@/css/style1.css" spacing="20">
+      fx:controller="controllers.Afficherreponsespecifiqueadmin" stylesheets="/view/css/style1.css" spacing="20">
 <padding>
     <Insets top="20" right="20" bottom="20" left="20"/>
 </padding>

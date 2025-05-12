@@ -1,28 +1,25 @@
 
 package controllers;
 
-import entities.entiteReclamation;
+import models.entiteReclamation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import services.Reclamation;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.scene.control.Button;
-import java.io.IOException;
+import test.Main;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class Afficherreclamation  implements Initializable {
+public class Afficherreclamation implements Initializable {
 
     @FXML
     private ListView<entiteReclamation> afficherlist;
@@ -75,8 +72,17 @@ public class Afficherreclamation  implements Initializable {
         alert.showAndWait();
     }
     @FXML
-    void annulerafficher(ActionEvent event) {
-        retourButton.getScene().getWindow().hide();
+    void annulerafficher(ActionEvent event) throws IOException {
+        //retourButton.getScene().getWindow().hide();
+        try {
+            // Transition vers user_dashboard.fxml
+            Main.changeScene("/view/user_dashboard.fxml", "Bienvenue - Gestion de Vols", 700, 700);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Erreur", "Erreur de Navigation", "Impossible de retourner au tableau de bord : " + e.getMessage(), Alert.AlertType.ERROR);
+        }
+
 
     }
 

@@ -1,0 +1,56 @@
+/* Header Label Style */
+#headerLabel {
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+/* Content Pane Style */
+#contentPane {
+    -fx-background-color: #faf8f6;
+    -fx-border-color: #d3d3d3;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+/* Button Style */
+.button {
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+#btnajouter {
+    -fx-background-color: #B0E0E6;
+}
+
+#btnajouter:hover {
+    -fx-background-color: #B0E0E6;
+}
+
+#btnmodifier {
+    -fx-background-color: #2196F3;
+}
+
+#btnmodifier:hover {
+    -fx-background-color: #1e88e5;
+}
+
+#btnsupprimer {
+    -fx-background-color: #7B68EE;
+}
+
+#btnsupprimer:hover {
+    -fx-background-color: #7B68EE;
+}
+
+#btnafficher {
+    -fx-background-color: #191970;
+}
+
+#btnafficher:hover {
+    -fx-background-color: #191970;
+}

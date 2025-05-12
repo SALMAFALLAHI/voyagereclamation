@@ -1,14 +1,14 @@
 package services;
 
-import entities.entiteReclamation;
-import entities.entiteReponseAdmin;
-import utils.MyDataBase;
+import models.entiteReclamation;
+import models.entiteReponseAdmin;
+import utils.DatabaseUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
 
 public class AdminService {
     private static final String URL = "jdbc:mysql://localhost:3306/avis_et_reclamation";
@@ -22,7 +22,12 @@ public class AdminService {
     private Connection connection;
 
     public AdminService() {
-        connection = MyDataBase.getInstance().getConnection();
+        try {
+            connection = DatabaseUtil.getInstance().getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            connection = null;
+        }
     }
     public List<entiteReclamation> afficherReclamationsTraitees() throws SQLException {
         List<entiteReclamation> reclamations = new ArrayList<>();

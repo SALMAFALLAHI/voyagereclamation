@@ -1,5 +1,7 @@
 package controllers;
 
+import javafx.scene.control.Alert;
+import models.entiteReclamation;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -9,11 +11,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import services.AdminService;
-import entities.entiteReclamation;
+import test.Main;
 
+import java.io.IOException;
 import java.sql.SQLException;
-import java.time.format.DateTimeFormatter;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
 public class AfficherReclamationsTraitees {
 
@@ -78,7 +81,25 @@ public class AfficherReclamationsTraitees {
     @FXML
     private void handleRetour() {
         // fermer la fenêtre actuelle
-        retourButton.getScene().getWindow().hide();
+        //retourButton.getScene().getWindow().hide();
+        try {
+            // Transition vers user_dashboard.fxml
+            Main.changeScene("/view/admin_menu.fxml", "Bienvenue - Gestion de Vols", 700, 700);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Erreur", "Erreur de Navigation", "Impossible de retourner au tableau de bord : " + e.getMessage(), Alert.AlertType.ERROR);
+        }
+
 
     }
+
+        private void showAlert(String title, String header, String content, Alert.AlertType alertType) {
+            Alert alert = new Alert(alertType);
+            alert.setTitle(title);
+            alert.setHeaderText(header);
+            alert.setContentText(content);
+            alert.showAndWait();
+        }
+    
 }

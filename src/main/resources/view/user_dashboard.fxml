@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserDashboardController">
+    <top>
+        <VBox alignment="CENTER" spacing="5.0" style="-fx-background-color: #F0F0F0; -fx-padding: 10;">
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </padding>
+            <Label text="Mon Espace Personnel">
+                <font>
+                    <Font name="System Bold" size="24.0" />
+                </font>
+            </Label>
+            <Label fx:id="welcomeUserLabel" text="Bienvenue !"/>
+        </VBox>
+    </top>
+    <left>
+        <VBox spacing="12.0" prefWidth="220.0" style="-fx-background-color: #EAEAEA; -fx-padding: 15;">
+            <padding>
+                <Insets top="15.0" bottom="15.0" left="10.0" right="10.0"/>
+            </padding>
+            <Button fx:id="btnGestionCompte" onAction="#handleGestionCompte" text="Gestion du Compte" prefWidth="Infinity" style="-fx-font-size: 14px; -fx-alignment: CENTER_LEFT;"/>
+            <Button fx:id="btnGestionVols" onAction="#handleGestionVols" text="Gestion des Vols" prefWidth="Infinity" style="-fx-font-size: 14px; -fx-alignment: CENTER_LEFT;"/>
+            <Button fx:id="btnGestionHebergements" onAction="#handleGestionHebergements" text="Gestion d'Hébergement" prefWidth="Infinity" style="-fx-font-size: 14px; -fx-alignment: CENTER_LEFT;"/>
+            <Button fx:id="btnGestionReservations" onAction="#handleGestionReservations" text="Gestion de Réservation" prefWidth="Infinity" style="-fx-font-size: 14px; -fx-alignment: CENTER_LEFT;"/>
+            <Button fx:id="btnGestionExcursions" onAction="#handleGestionExcursions" text="Gestion d'Excursion" prefWidth="Infinity" style="-fx-font-size: 14px; -fx-alignment: CENTER_LEFT;"/>
+            <Button fx:id="btnGestionAvis" onAction="#handleGestionAvis" text="Gestion d'Avis et Réclamation" prefWidth="Infinity" style="-fx-font-size: 14px; -fx-alignment: CENTER_LEFT;"/>
+            <VBox VBox.vgrow="ALWAYS" /> <!-- Spacer -->
+            <Button fx:id="btnLogoutUser" onAction="#handleLogoutUserAction" text="Déconnexion" prefWidth="Infinity" style="-fx-font-size: 14px; -fx-background-color: #f44336; -fx-text-fill: white; -fx-alignment: CENTER_LEFT;"/>
+        </VBox>
+    </left>
+    <center>
+        <StackPane fx:id="userMainContentArea" style="-fx-padding: 10;">
+            <!-- Contenu principal du tableau de bord utilisateur -->
+             <VBox fx:id="userPlaceholderView" alignment="CENTER" spacing="10" visible="true">
+                 <Label fx:id="userPlaceholderLabel" text="Bienvenue sur votre espace personnel. Sélectionnez une option dans le menu de gauche." style="-fx-font-size: 16px; -fx-text-fill: #333333;" textAlignment="CENTER" wrapText="true"/>
+            </VBox>
+        </StackPane>
+    </center>
+</BorderPane>
+

@@ -1,0 +1,44 @@
+/* Header Pane Style */
+#headerPane {
+    -fx-background-color: #d3d3d3;
+}
+
+/* Header Label Style */
+#headerLabel {
+    -fx-text-fill: #2c949b;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+/* Content Pane Style */
+#contentPane {
+    -fx-background-color: #B0E0E6;
+    -fx-border-color: #d3d3d3;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+/* ListView Style */
+#afficherlist {
+    -fx-background-color: white;
+    -fx-border-color: #d3d3d3;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+/* Button Style */
+.button {
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+#retourButton {
+    -fx-background-color: #7B68EE;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+#retourButton:hover {
+    -fx-background-color: #7B68EE;
+}

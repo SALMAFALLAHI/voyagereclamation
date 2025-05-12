@@ -1,22 +1,17 @@
 package controllers;
 
-import services.Reclamation;
-import entities.entiteReclamation;
+import models.entiteReclamation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ListView;
 import javafx.scene.control.*;
-import javafx.fxml.FXMLLoader;
-import java.io.IOException;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import services.Reclamation;
+import test.Main;
 
+import java.io.IOException;
 import java.net.URL;
-import java.util.ResourceBundle;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -32,7 +27,15 @@ public class supprimerreclamation implements Initializable {
     @FXML
     void annulersupprimer(ActionEvent event) {
         // fermer la fenêtre actuelle
-        retourButton.getScene().getWindow().hide();
+        //retourButton.getScene().getWindow().hide();
+        try {
+            // Transition vers user_dashboard.fxml
+            Main.changeScene("/view/user_dashboard.fxml", "Bienvenue - Gestion de Vols", 700, 700);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Erreur", "Erreur de Navigation", "Impossible de retourner au tableau de bord : " + e.getMessage(), Alert.AlertType.ERROR);
+        }
 
     }
 
